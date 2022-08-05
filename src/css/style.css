@@ -48,6 +48,7 @@ Layout
 /*Hamburger*/
 
 .nav-list {
+    display: absolute;
     position: fixed;
     left: -100%;
     top: 5rem;
@@ -58,6 +59,7 @@ Layout
     text-align: center;
     transition: 0.7s;
     box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    list-style: none;
 }
 
 .nav-list.open {
@@ -93,4 +95,22 @@ Layout
 
 .hamburger.open .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
+}
+
+@media only screen and (min-width: 768px) {
+    .hamburger {
+        display: none;
+    }
+
+    .nav-list
+    {
+    display: flex;
+    position: static;
+    width: auto;
+    flex-direction: row;
+    top: auto;
+    left: auto;
+    justify-content: space-between;
+    transition: none;
+}
 }
