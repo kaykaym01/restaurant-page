@@ -17,8 +17,7 @@ Layout
 /*Navbar*/
 .nav {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
 }
 
 .nav-brand {
@@ -27,23 +26,71 @@ Layout
     text-align: center;
     text-decoration: none;
     color: black;
-}
-
-.nav-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+    cursor: pointer;
 }
 
 .nav-btn {
     background-color: hsl(33, 100%, 88%);
     padding: 0.5em;
-    width: 100%;
 }
 
 .nav-btn:hover {
     cursor: pointer;
     background-color: hsl(33, 100%, 65%);
     ;
+}
+
+.nav-btn.active {
+    background-color: hsl(33, 100%, 30%);
+    color: white;
+}
+
+/*Hamburger*/
+
+.nav-list {
+    position: fixed;
+    left: -100%;
+    top: 5rem;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.7s;
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+}
+
+.nav-list.open {
+    left: 0;
+    display: block;
+    transition: 0.6s;
+}
+
+.hamburger {
+    display: block;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #101010;
+}
+
+.hamburger.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.open .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
 }

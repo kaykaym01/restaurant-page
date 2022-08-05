@@ -24,7 +24,8 @@ function navbar() {
     const nav = document.createElement("nav");
     nav.classList.add("nav");
     nav.appendChild(navLogo());
-    nav.appendChild(navList())
+    nav.appendChild(navList());
+    nav.appendChild(hamburger());
     console.log("nav loaded");
     return nav;
 }
@@ -70,12 +71,49 @@ function navList() {
         navBtn.setAttribute("id", tab.id);
         navBtn.textContent = tab.name;
         addNavBtnClickEvent(navBtn, tab.clickEvent);
+        navBtn.addEventListener("click", closeMobileMenu)
         listItem.appendChild(navBtn);
         list.appendChild(listItem);
     });
     return list;
 }
 
+/**
+ * Creates and returns the hamburger icon for responsive nav menu
+ * @returns Hamburger icon that opens and closes mobile menu
+ */
+function hamburger() {
+    const hamburger = document.createElement('button');
+    hamburger.classList.add('hamburger');
+    for (let i = 0; i < 3; i++) {
+        const bar = document.createElement('span');
+        bar.classList.add('bar');
+        hamburger.appendChild(bar);
+    }
+
+    hamburger.addEventListener("click", toggleMobileMenu);
+
+    return hamburger;
+}
+
+/**
+ * Opens and closes mobile menu when clicked
+ */
+function toggleMobileMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-list');
+
+    hamburger.classList.toggle('open');
+    navMenu.classList.toggle('open');
+}
+
+function closeMobileMenu(){
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-list');
+
+    hamburger.classList.remove('open');
+    navMenu.classList.remove('open');
+}
 /**
  * Loads nav logo into a button and returns button
  * @returns Nav logo button
