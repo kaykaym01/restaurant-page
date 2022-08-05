@@ -9,4 +9,14 @@ function loadMain() {
     return main;
 }
 
-export default loadMain;
+/**
+ * Clears all content from main section
+ */
+function clearMain(){
+    const main = document.querySelector("main");
+    while (main.firstChild){
+        main.removeChild(main.firstChild);
+    }
+    console.log("main cleared");
+}
+export {loadMain, clearMain};
