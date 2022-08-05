@@ -19,4 +19,15 @@ function clearMain(){
     }
     console.log("main cleared");
 }
-export {loadMain, clearMain};
+
+/**
+ * Adds content as child of main
+ * @param {*} content Content to add to main
+ */
+function addToMain(content){
+    const main = document.querySelector("main");
+    main.appendChild(content);
+    console.log("content added to main");
+}
+
+export {loadMain, clearMain, addToMain};
