@@ -3,7 +3,7 @@ import './css/style.css';
 
 import loadHeader from './structure/header';
 import loadFooter from './structure/footer';
-import loadMain from './structure/main';
+import {loadMain} from './structure/main';
 
 import loadHome from './pages/home';
 
