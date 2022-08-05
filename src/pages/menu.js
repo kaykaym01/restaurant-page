@@ -4,7 +4,7 @@
  */
 function loadMenu() {
     const menu = document.createElement("div");
-    menu.classList.add("menu"); 
+    menu.classList.add("menu");
     console.log("menu loaded");
     return menu;
 }
