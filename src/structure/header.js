@@ -39,17 +39,17 @@ function getNavTabs() {
         {
             name: "Menu",
             id: "#menu-btn",
-            clickEvent: loadMenu,
+            loadPage: loadMenu,
         },
         {
             name: "Our Story",
             id: "#our-story-btn",
-            clickEvent: loadOurStory,
+            loadPage: loadOurStory,
         },
         {
             name: "Contact",
             id: "#contact-btn",
-            clickEvent: loadContact,
+            loadPage: loadContact,
         },
     ];
     return navTabs;
@@ -70,7 +70,7 @@ function navList() {
         navBtn.classList.add("nav-btn");
         navBtn.setAttribute("id", tab.id);
         navBtn.textContent = tab.name;
-        addNavBtnClickEvent(navBtn, tab.clickEvent);
+        navBtn.addEventListener('click', e => loadPageIfNotActive.apply(this, [e, tab.loadPage]));
         navBtn.addEventListener("click", closeMobileMenu)
         listItem.appendChild(navBtn);
         list.appendChild(listItem);
@@ -107,7 +107,7 @@ function toggleMobileMenu() {
     navMenu.classList.toggle('open');
 }
 
-function closeMobileMenu(){
+function closeMobileMenu() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-list');
 
@@ -121,21 +121,9 @@ function closeMobileMenu(){
 function navLogo() {
     const logoBtn = document.createElement("button");
     logoBtn.classList.add("nav-btn", "nav-brand");
-    logoBtn.textContent = "Rooted";
-    addNavBtnClickEvent(logoBtn, loadHome);
+    logoBtn.textContent = "rooted";
+    logoBtn.addEventListener('click', e => clearMainAndLoadPage.apply(this, [e, loadHome]));
     return logoBtn;
-}
-
-/**
- * Adds a click event that checks if the selected 
- * button's tab is active and if not, removes the ac
- * @param {*} navBtn 
- * @param {*} loadPage 
- */
-function addNavBtnClickEvent(navBtn, loadPage) {
-    navBtn.addEventListener('click', (e) => {
-        loadPageIfNotActive(e, loadPage);
-    });
 }
 
 /**
@@ -147,11 +135,20 @@ function addNavBtnClickEvent(navBtn, loadPage) {
  */
 function loadPageIfNotActive(event, loadPage) {
     if (!event.target.classList.contains("active")) {
-        removeActiveClassFromNavBtns();
-        event.target.classList.add("active");
-        clearMain();
-        addToMain(loadPage());
+        clearMainAndLoadPage(event, loadPage);
     }
+}
+
+/**
+ * Clears the content on main and calls loadPage
+ * @param {*} event The click event that is calling this method
+ * @param {*} loadPage The function to call when the event is clicked
+ */
+function clearMainAndLoadPage(event, loadPage) {
+    removeActiveClassFromNavBtns();
+    event.target.classList.add("active");
+    clearMain();
+    addToMain(loadPage());
 }
 
 /**
