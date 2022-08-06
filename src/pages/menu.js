@@ -7,7 +7,6 @@ import '../css/menu.css';
  * @returns Site menu page
  */
 function loadMenu() {
-    console.log("menu loaded");
     return menu();
 }
 
