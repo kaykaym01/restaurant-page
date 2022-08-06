@@ -61,13 +61,13 @@ function getNavTabs() {
  */
 function navList() {
     const list = document.createElement("ul");
-    list.classList.add("nav-list")
+    list.classList.add("nav-list");
     const navTabs = getNavTabs();
     navTabs.forEach(tab => {
         const listItem = document.createElement("li");
         listItem.classList.add("nav-list-item");
         const navBtn = document.createElement("button");
-        navBtn.classList.add("nav-btn");
+        navBtn.classList.add("nav-btn", "nav-link");
         navBtn.setAttribute("id", tab.id);
         navBtn.textContent = tab.name;
         navBtn.addEventListener('click', e => loadPageIfNotActive.apply(this, [e, tab.loadPage]));
@@ -120,7 +120,7 @@ function closeMobileMenu() {
  */
 function navLogo() {
     const logoBtn = document.createElement("button");
-    logoBtn.classList.add("nav-btn", "nav-brand");
+    logoBtn.classList.add("nav-link", "nav-brand");
     logoBtn.textContent = "rooted";
     logoBtn.addEventListener('click', e => clearMainAndLoadPage.apply(this, [e, loadHome]));
     return logoBtn;
@@ -145,20 +145,20 @@ function loadPageIfNotActive(event, loadPage) {
  * @param {*} loadPage The function to call when the event is clicked
  */
 function clearMainAndLoadPage(event, loadPage) {
-    removeActiveClassFromNavBtns();
+    removeActiveClassFromNavLink();
     event.target.classList.add("active");
     clearMain();
     addToMain(loadPage());
 }
 
 /**
- * Helper function to remove the active class from all other nav buttons
+ * Helper function to remove the active class from active nav link
  */
-function removeActiveClassFromNavBtns() {
-    const navBtns = document.querySelectorAll(".nav-btn");
-    navBtns.forEach(navBtn => {
-        navBtn.classList.remove("active");
-    })
+function removeActiveClassFromNavLink() {
+    const activeNavLink = document.querySelector(".nav-link.active");
+    if (activeNavLink) {
+        activeNavLink.classList.remove("active");
+    }
 }
 
 export default loadHeader;
