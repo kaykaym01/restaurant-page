@@ -5,7 +5,6 @@
 function loadMain() {    
     const main = document.createElement("main");
     main.classList.add("main");  
-    console.log("main loaded");
     return main;
 }
 
