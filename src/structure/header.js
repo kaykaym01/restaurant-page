@@ -12,7 +12,6 @@ function loadHeader() {
     const header = document.createElement("header");
     header.classList.add("header");
     header.appendChild(navbar());
-    console.log("header loaded");
     return header;
 }
 
@@ -26,7 +25,6 @@ function navbar() {
     nav.appendChild(navLogo());
     nav.appendChild(navList());
     nav.appendChild(hamburger());
-    console.log("nav loaded");
     return nav;
 }
 
