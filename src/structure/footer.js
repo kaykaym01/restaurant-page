@@ -5,7 +5,6 @@
 function loadFooter() {    
     const footer = document.createElement("footer");
     footer.classList.add("footer");  
-    console.log("footer loaded");
     return footer;
 }
 
