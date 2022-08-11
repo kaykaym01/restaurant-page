@@ -1,6 +1,8 @@
 # restaurant-page
 
-Mock restaurant website built with HTML, CSS, &amp; JavaScript
+Live Site: [Restaurant Page](https://kaykaym01.github.io/restaurant-page/)
+
+Mock restaurant website built with HTML, CSS, &amp; JavaScript.
 
 
 Site Screenshot: 
