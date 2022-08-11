@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;700&family=Playfair+Display:wght@400;500;700&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -7,7 +9,10 @@
 Typography
 **/
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /**
@@ -18,20 +23,26 @@ Layout
 .nav {
     display: flex;
     justify-content: space-between;
+    padding: 1em 1.5em;
 }
 
 .nav-brand {
+    font-family: 'Playfair Display', sans-serif;
+    letter-spacing: 0.3em;
     font-weight: bold;
     font-size: 2rem;
     text-align: center;
     text-decoration: none;
     color: black;
     cursor: pointer;
+    background-color: transparent;
+    border: none;
 }
 
 .nav-btn {
-    background-color: hsl(33, 100%, 88%);
     padding: 0.5em;
+    border: none;
+    background-color: transparent;
 }
 
 .nav-btn:hover {
@@ -58,7 +69,7 @@ Layout
     border-radius: 10px;
     text-align: center;
     transition: 0.7s;
-    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    /* box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05); */
     list-style: none;
 }
 
@@ -102,15 +113,36 @@ Layout
         display: none;
     }
 
-    .nav-list
-    {
-    display: flex;
-    position: static;
-    width: auto;
-    flex-direction: row;
-    top: auto;
-    left: auto;
-    justify-content: space-between;
-    transition: none;
+    .nav-list.open {
+        display: flex;
+    }
+
+    .nav-list {
+        display: flex;
+        gap: 2rem;
+        position: static;
+        width: auto;
+        flex-direction: row;
+        top: auto;
+        left: auto;
+        justify-content: space-between;
+        transition: none;
+    }
 }
+
+.page-title {
+    text-align: center;
+}
+
+.subtitle {
+    text-align: center;
+}
+
+main {
+    flex-grow: 1;
+}
+
+footer {
+    margin-top: auto;
+    padding: 0.5em 0;
 }
