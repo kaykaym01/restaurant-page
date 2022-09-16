@@ -1,4 +1,5 @@
 import storyContent from "./storyContent";
+import spanishMoss from "../img/spanish-moss.jpg"
 import '../css/ourStory.css';
 
 /**
@@ -18,6 +19,7 @@ function ourStory(){
     ourStory.appendChild(ourStoryTitle);
 
     ourStory.appendChild(ourStoryText());
+    ourStory.appendChild(ourStoryImg());
     return ourStory;
 }
 
@@ -26,6 +28,19 @@ function ourStoryText(){
     storyText.classList.add("story-content");
     storyText.textContent = storyContent;
     return storyText;
+}
+
+function ourStoryImg() {
+    const imageDiv = document.createElement('div');
+    imageDiv.classList.add("story-img-wrapper");
+    
+    const image = new Image();
+    image.className = "story-img";
+    image.src = spanishMoss;
+    image.alt = "trees covered in spanish moss overlooking a trail";
+    imageDiv.appendChild(image);
+
+    return imageDiv;
 }
 
 export default loadOurStory;

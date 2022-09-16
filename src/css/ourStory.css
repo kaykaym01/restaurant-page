@@ -7,3 +7,11 @@
     text-align: center;
     line-height: 1.75;
 }
+
+.story-img {
+    max-width: 100%;
+    object-fit: scale-down;
+    max-height: 325px;
+    margin: 10px auto 0 auto;
+    display: block;
+}
